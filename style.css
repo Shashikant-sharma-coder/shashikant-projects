@@ -71,6 +71,13 @@ footer {
     margin-top: 50px;
 }
 
+/* Skills Section Background */
+#skills {
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* soft gradient */
+    padding: 60px 0;
+    border-radius: 10px;
+}
+
 @media(max-width:768px){
     header nav ul {
         flex-direction: column;
