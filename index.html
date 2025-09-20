@@ -514,7 +514,7 @@ function toggleDetails(index) {
 <section id="contact" class="content-section">
   <div class="container">
     <h2 class="section-title">Contact Me</h2>
-    <form id="contact-form" action="send_email.php" method="POST" style="max-width:600px; margin:auto;">
+    <form id="contact-form" style="max-width:600px; margin:auto;">
       <div class="mb-3">
         <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
       </div>
@@ -554,6 +554,39 @@ function toggleDetails(index) {
 }
 </style>
 
+<!-- EmailJS Integration -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+  emailjs.init("9qs0op5QKqgIm27TR"); // Replace with your EmailJS user ID
+})();
+
+document.getElementById('contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const status = document.getElementById('form-status');
+  status.style.color = 'green';
+  status.innerText = 'Sending...';
+
+  const templateParams = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value
+  };
+
+  emailjs.send('service_8cxsz6h', 'template_ppjkr56', templateParams)
+  .then(function(response) {
+    status.innerText = 'Message sent successfully!';
+    document.getElementById('contact-form').reset();
+  }, function(error) {
+    status.style.color = 'red';
+    status.innerText = 'Failed to send message. Please try again.';
+    console.error('EmailJS error:', error);
+  });
+});
+</script>
+
+
 
   <!-- Footer -->
   <footer>
@@ -585,6 +618,7 @@ function toggleDetails(index) {
   </script>
 </body>
 </html>
+
 
 
 
