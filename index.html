@@ -346,18 +346,89 @@ ul {
 </style>
 
 
-  <!-- Certificates Section -->
-  <section id="certificates" class="content-section">
-    <div class="container">
-      <h2 class="section-title">Certificates</h2>
-      <ul>
-        <li>Microsoft Certified: Power BI Data Analyst Associate</li>
-        <li>Microsoft Certified: Azure Data Fundamentals</li>
-        <li>Google Data Analytics (Foundations)</li>
-        <li>IBM SQL & Data Science Certifications</li>
-      </ul>
+<!-- Certificates Section -->
+<section id="certificates" class="content-section">
+  <div class="container">
+    <h2 class="section-title">Certificates</h2>
+    <div class="row">
+      
+      <!-- Left: Certificate Names -->
+      <div class="col-md-4">
+        <ul class="certificate-list list-group">
+          <li class="list-group-item active" onclick="showCertificate('cert1')">Power BI Data Analyst</li>
+          <li class="list-group-item" onclick="showCertificate('cert2')">Azure Data Fundamentals</li>
+          <li class="list-group-item" onclick="showCertificate('cert3')">Google Data Analytics</li>
+          <li class="list-group-item" onclick="showCertificate('cert4')">IBM SQL & Data Science</li>
+        </ul>
+      </div>
+
+      <!-- Right: Certificate Details -->
+      <div class="col-md-8">
+        <div id="cert1" class="certificate-detail active">
+          <img src="cert-powerbi.jpg" alt="Power BI" class="img-fluid mb-2">
+          <p><strong>Power BI Data Analyst Associate</strong></p>
+          <p>Learned advanced data modeling, visualization, and report automation using Power BI.</p>
+          <a href="https://www.microsoft.com/en-us/learning/certification-exam" target="_blank">Verify Certificate</a>
+        </div>
+
+        <div id="cert2" class="certificate-detail">
+          <img src="cert-azure.jpg" alt="Azure" class="img-fluid mb-2">
+          <p><strong>Azure Data Fundamentals</strong></p>
+          <p>Understanding cloud data services, storage, and analytics in Microsoft Azure.</p>
+          <a href="https://www.microsoft.com/en-us/learning/certification-exam" target="_blank">Verify Certificate</a>
+        </div>
+
+        <div id="cert3" class="certificate-detail">
+          <img src="cert-google.jpg" alt="Google" class="img-fluid mb-2">
+          <p><strong>Google Data Analytics</strong></p>
+          <p>Learned data cleaning, visualization, and analysis using Google tools and spreadsheets.</p>
+          <a href="https://www.coursera.org/account/accomplishments" target="_blank">Verify Certificate</a>
+        </div>
+
+        <div id="cert4" class="certificate-detail">
+          <img src="cert-ibm.jpg" alt="IBM" class="img-fluid mb-2">
+          <p><strong>IBM SQL & Data Science</strong></p>
+          <p>Hands-on SQL, Python, and data science skills for practical data analysis tasks.</p>
+          <a href="https://www.ibm.com/certify" target="_blank">Verify Certificate</a>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Certificate CSS -->
+<style>
+.certificate-list li {
+    cursor: pointer;
+}
+.certificate-list li.active {
+    background-color: #0077b6;
+    color: #fff;
+    font-weight: bold;
+}
+.certificate-detail {
+    display: none;
+    text-align: left;
+}
+.certificate-detail.active {
+    display: block;
+}
+</style>
+
+<!-- Certificate JS -->
+<script>
+function showCertificate(id) {
+    // Remove active from all
+    document.querySelectorAll('.certificate-detail').forEach(div => div.classList.remove('active'));
+    document.querySelectorAll('.certificate-list li').forEach(li => li.classList.remove('active'));
+
+    // Add active to clicked
+    document.getElementById(id).classList.add('active');
+    document.querySelector('.certificate-list li[onclick="showCertificate(\''+id+'\')"]').classList.add('active');
+}
+</script>
+
 
   <!-- Contact Section -->
   <section id="contact" class="content-section">
@@ -408,6 +479,7 @@ ul {
   </script>
 </body>
 </html>
+
 
 
 
