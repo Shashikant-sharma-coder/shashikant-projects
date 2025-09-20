@@ -510,22 +510,22 @@ function toggleDetails(index) {
 
 
 
-  <!-- Contact Section -->
+<!-- Contact Section -->
 <section id="contact" class="content-section">
   <div class="container">
     <h2 class="section-title">Contact Me</h2>
-    <form id="contact-form">
+    <form id="contact-form" action="send_email.php" method="POST" style="max-width:600px; margin:auto;">
       <div class="mb-3">
-        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+        <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
       </div>
       <div class="mb-3">
-        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
       </div>
       <div class="mb-3">
-        <textarea id="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+        <textarea name="message" id="message" class="form-control" rows="5" placeholder="Your Message" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;"></textarea>
       </div>
-      <button type="submit" class="btn btn-info">Send Message</button>
-      <p id="form-status" style="margin-top:10px;"></p>
+      <button type="submit" class="btn btn-info" style="background-color:#0077b6; color:#fff; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Send Message</button>
+      <p id="form-status" style="margin-top:10px; font-weight:bold;"></p>
     </form>
   </div>
 </section>
@@ -537,51 +537,23 @@ function toggleDetails(index) {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  border: 1px solid #ccc;
 }
+
 #contact-form button {
   background-color: #0077b6;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
 }
+
 #form-status {
   font-weight: bold;
-  color: green;
 }
 </style>
 
-<!-- EmailJS Integration -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-(function(){
-  emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
-})();
-
-document.getElementById('contact-form').addEventListener('submit', function(e){
-  e.preventDefault();
-
-  const status = document.getElementById('form-status');
-  status.style.color = 'green';
-  status.innerText = 'Sending...';
-
-  const templateParams = {
-    from_name: document.getElementById('name').value,
-    from_email: document.getElementById('email').value,
-    message: document.getElementById('message').value
-  };
-
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-  .then(function(response) {
-    status.innerText = 'Message sent successfully!';
-    document.getElementById('contact-form').reset();
-  }, function(error) {
-    status.style.color = 'red';
-    status.innerText = 'Failed to send message. Please try again.';
-    console.error('EmailJS error:', error);
-  });
-});
-</script>
 
   <!-- Footer -->
   <footer>
@@ -613,6 +585,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e){
   </script>
 </body>
 </html>
+
 
 
 
