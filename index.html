@@ -350,55 +350,50 @@ ul {
 <section id="certificates" class="content-section">
   <div class="container">
     <h2 class="section-title">Certificates</h2>
-    <ul id="cert-list" class="list-group">
-      <li class="list-group-item" onclick="toggleCertificate(0)">Microsoft Certified: Power BI Data Analyst Associate</li>
-      <li class="list-group-item" onclick="toggleCertificate(1)">AWS Certified Cloud Practitioner</li>
-      <li class="list-group-item" onclick="toggleCertificate(2)">Microsoft Certified: Azure Data Fundamentals</li>
-      <li class="list-group-item" onclick="toggleCertificate(3)">Databases and SQL for Data Science with Python (IBM)</li>
-      <li class="list-group-item" onclick="toggleCertificate(4)">Python (LetsUpgrade)</li>
-      <li class="list-group-item" onclick="toggleCertificate(5)">Business Analytics with Excel (Simplilearn)</li>
-      <li class="list-group-item" onclick="toggleCertificate(6)">Foundations: Data, Data, Everywhere (Google)</li>
+    <ul id="cert-list" class="cert-list">
+      <!-- Certificates will be injected here -->
     </ul>
-
-    <!-- Certificate Details Area -->
-    <div id="cert-details"></div>
   </div>
 </section>
 
 <!-- Certificates CSS -->
 <style>
-#cert-list {
+.cert-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
-#cert-list .list-group-item {
-  cursor: pointer;
-  padding: 12px;
+.cert-item {
+  margin-bottom: 12px;
   border: 1px solid #ddd;
-  margin-bottom: 5px;
   border-radius: 6px;
+  overflow: hidden;
   background: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.cert-header {
+  padding: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #e9f5ff;
   transition: 0.3s;
 }
-#cert-list .list-group-item:hover {
-  background: #e9f5ff;
+.cert-header:hover {
+  background: #d0ebff;
 }
-#cert-list .list-group-item.active {
+.cert-header.active {
   background: #0077b6;
   color: #fff;
-  font-weight: bold;
 }
-.certificate-box {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px 0 20px 0;
-  border-radius: 8px;
+.certificate-details {
+  display: none;
+  padding: 14px;
+  font-size: 14px;
   background: #fff;
+  border-top: 1px solid #ccc;
+  animation: fadeIn 0.3s ease-in-out;
 }
-.certificate-box h3 {
-  margin-top: 0;
-}
-.certificate-box a {
+.certificate-details a {
   display: inline-block;
   margin-top: 8px;
   padding: 6px 12px;
@@ -407,8 +402,12 @@ ul {
   text-decoration: none;
   border-radius: 5px;
 }
-.certificate-box a:hover {
+.certificate-details a:hover {
   background: #023e8a;
+}
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-5px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 </style>
 
@@ -420,8 +419,8 @@ const certificates = [
     issuer: "Microsoft",
     skills: "Power BI, Data Analysis, Visualization",
     issued: "Jan 2025 · Expires Jan 2026",
-    link: "https://learn.microsoft.com/en-us/users/shashikantsharma-8201/credentials/3bd24e1d30528008?ref=https%3A%2F%2Fwww.linkedin.com%2F",
-    description: "Learned advanced Power BI skills including data modeling, visualization, and creating interactive dashboards for real-world business scenarios."
+    link: "https://learn.microsoft.com/en-us/users/shashikantsharma-8201/credentials/3bd24e1d30528008",
+    description: "Learned advanced Power BI skills including data modeling, visualization, and creating interactive dashboards."
   },
   {
     name: "AWS Certified Cloud Practitioner",
@@ -429,15 +428,15 @@ const certificates = [
     skills: "Cloud Fundamentals, AWS Basics",
     issued: "Jun 2025 · Expires Jun 2028",
     link: "https://www.credly.com/badges/63d6083a-0629-490c-9450-914ca728a5bc/linked_in_profile",
-    description: "Gained foundational knowledge of AWS cloud services, cloud architecture, and best practices for deploying cloud solutions."
+    description: "Gained foundational knowledge of AWS cloud services, cloud architecture, and best practices."
   },
   {
     name: "Microsoft Certified: Azure Data Fundamentals",
     issuer: "Microsoft",
     skills: "Azure, Cloud Data Fundamentals",
     issued: "Sep 2024",
-    link: "https://learn.microsoft.com/en-us/users/shashikantsharma-8201/credentials/c75780bb884adf7b?ref=https%3A%2F%2Fwww.linkedin.com%2F",
-    description: "Understanding core data concepts and how they are implemented using Microsoft Azure data services."
+    link: "https://learn.microsoft.com/en-us/users/shashikantsharma-8201/credentials/c75780bb884adf7b",
+    description: "Understanding core data concepts and their implementation using Azure data services."
   },
   {
     name: "Databases and SQL for Data Science with Python (IBM)",
@@ -448,7 +447,7 @@ const certificates = [
     description: "Learned SQL, database management, and Python for data science applications, including data extraction and transformation."
   },
   {
-    name: "Python",
+    name: "Python (LetsUpgrade)",
     issuer: "LetsUpgrade",
     skills: "Python Programming, Data Manipulation",
     issued: "Feb 2025",
@@ -456,15 +455,15 @@ const certificates = [
     description: "Mastered Python basics and applied it to data analysis and automation tasks."
   },
   {
-    name: "Business Analytics with Excel",
+    name: "Business Analytics with Excel (Simplilearn)",
     issuer: "Simplilearn",
     skills: "Excel, Business Analytics, Data Visualization",
     issued: "Jan 2025",
-    link: "https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiI2NjQiLCJjZXJ0aWZpY2F0ZV91cmwiOiJodHRwczpcL1wvY2VydGlmaWNhdGVzLnNpbXBsaWNkbi5uZXRcL3NoYXJlXC83NzQ3MDYwXzY5MjA1OTgxNzM2MTcwNjUyMDI0LnBuZyIsInVzZXJuYW1lIjoiU2hhc2hpa2FudCBzaGFybWEifQ&utm_source=shared-certificate&utm_medium=app_lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Fcertificates.simplicdn.net%2Fshare%2F7747060_69205981736170652024.png&_branch_match_id=1497434712846533451&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1jdxtzTIKyhLDg9Isq8rSk1LLSrKzEuPTyrKLy9OLbL1AapJTfHMAwD9kLk%2BPwAAAA%3D%3D",
+    link: "https://www.simplilearn.com/skillup-certificate-landing?token=xyz",
     description: "Applied Excel for data analytics, including formulas, pivot tables, charts, and dashboards for business decisions."
   },
   {
-    name: "Foundations: Data, Data, Everywhere",
+    name: "Foundations: Data, Data, Everywhere (Google)",
     issuer: "Google",
     skills: "Data Basics, Analytics",
     issued: "Jan 2025",
@@ -473,35 +472,38 @@ const certificates = [
   }
 ];
 
-let activeIndex = null;
+// Render certificates
+const certList = document.getElementById("cert-list");
+certificates.forEach((cert, index) => {
+  const li = document.createElement("li");
+  li.className = "cert-item";
+  li.innerHTML = `
+    <div class="cert-header" onclick="toggleDetails(${index})">${cert.name}</div>
+    <div class="certificate-details" id="cert-${index}">
+      <p><strong>Issuer:</strong> ${cert.issuer}</p>
+      <p><strong>Skills:</strong> ${cert.skills}</p>
+      <p><strong>Issued:</strong> ${cert.issued}</p>
+      <p>${cert.description}</p>
+      <a href="${cert.link}" target="_blank">Verify Certificate</a>
+    </div>
+  `;
+  certList.appendChild(li);
+});
 
-function toggleCertificate(index) {
-  const detailDiv = document.getElementById("cert-details");
+// Toggle certificate details
+function toggleDetails(index) {
+  const detailDiv = document.getElementById(`cert-${index}`);
+  const header = detailDiv.previousElementSibling;
+  const isOpen = detailDiv.style.display === "block";
 
-  if (activeIndex === index) {
-    // Same item clicked → close it
-    detailDiv.innerHTML = "";
-    document.querySelectorAll("#cert-list li").forEach(li => li.classList.remove("active"));
-    activeIndex = null;
-  } else {
-    // Open new certificate details
-    const cert = certificates[index];
-    detailDiv.innerHTML = `
-      <div class="certificate-box">
-        <h3>${cert.name}</h3>
-        <p><strong>Issuer:</strong> ${cert.issuer}</p>
-        <p><strong>Skills:</strong> ${cert.skills}</p>
-        <p><strong>Issued:</strong> ${cert.issued}</p>
-        <p>${cert.description}</p>
-        <a href="${cert.link}" target="_blank">Verify Certificate</a>
-      </div>
-    `;
+  // Close all
+  document.querySelectorAll(".certificate-details").forEach(div => div.style.display = "none");
+  document.querySelectorAll(".cert-header").forEach(h => h.classList.remove("active"));
 
-    document.querySelectorAll("#cert-list li").forEach((li, i) => {
-      li.classList.toggle("active", i === index);
-    });
-
-    activeIndex = index;
+  // Toggle current
+  if (!isOpen) {
+    detailDiv.style.display = "block";
+    header.classList.add("active");
   }
 }
 </script>
@@ -557,6 +559,7 @@ function toggleCertificate(index) {
   </script>
 </body>
 </html>
+
 
 
 
