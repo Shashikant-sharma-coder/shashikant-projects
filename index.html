@@ -172,7 +172,6 @@
   </div>
 </section>
 
-<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
@@ -183,34 +182,40 @@ const skillData = {
   technical: {
     labels: ["SQL","Power BI","Excel","DBT","Azure","Snowflake","Data Viz","SSMS"],
     data: [20,20,15,15,10,10,5,5],
-    colors: ["#007bff","#28a745","#ffc107","#6f42c1","#17a2b8","#fd7e14","#20c997","#e83e8c"]
+    colors: ["#ff4d4d","#ffa64d","#ffff4d","#4dff4d","#4dffff","#4d4dff","#ff4dff","#ff4da6"]
   },
   analytical: {
     labels: ["Data Analysis","Analytical Skills","Financial Analysis","Data Modeling","Business Analysis"],
     data: [30,25,20,15,10],
-    colors: ["#28a745","#20c997","#ffc107","#6f42c1","#007bff"]
+    colors: ["#ff9933","#33ff99","#3399ff","#ff33cc","#cc33ff"]
   },
   professional: {
     labels: ["Communication","Email Etiquette","Phone Etiquette","Body Posture","Meeting Mgmt","Intent Ownership"],
     data: [25,20,15,15,15,10],
-    colors: ["#ffc107","#007bff","#17a2b8","#20c997","#6f42c1","#e83e8c"]
+    colors: ["#ffcc33","#33ccff","#cc33ff","#33ffcc","#ff33cc","#ff6633"]
   }
 };
 
 let skillsChart = new Chart(ctx, {
   type: 'doughnut',
-  data: { labels: [], datasets: [{ data: [], backgroundColor: [] }] },
+  data: { labels: [], datasets: [{ data: [], backgroundColor: [], borderWidth: 2 }] },
   options: {
     responsive: true,
+    cutout: '50%',
+    animation: { animateScale: true, animateRotate: true },
     plugins: {
-      legend: { position: 'bottom' },
+      legend: { position: 'bottom', labels: { font: { size: 14, weight: 'bold' } } },
       datalabels: {
-        color: 'white',
+        color: '#fff',
         formatter: (value, context) => {
-          // Show label + value inside slice, with "error" style
-          return context.chart.data.labels[context.dataIndex] + ' ' + value + '%';
+          // Fun / error style text
+          let skill = context.chart.data.labels[context.dataIndex];
+          let percent = value + '%';
+          return skill.toUpperCase() + ' ⚡ ' + percent;
         },
-        font: { weight: 'bold', size: 12 }
+        font: { weight: 'bold', size: 12 },
+        anchor: 'center',
+        align: 'center'
       },
       tooltip: {
         callbacks: {
@@ -280,7 +285,7 @@ updateChart('technical');
 
     <!-- Software Engineer -->
     <div class="experience-item">
-      <h5>Software Engineer</h5>
+      <h5><i class="fas fa-laptop-code text-primary"></i> Software Engineer</h5>
       <p>HCL Technologies Ltd <span class="text-muted">(2024–Present)</span></p>
       <ul>
         <li>Developed and maintained internal applications using modern technologies.</li>
@@ -291,7 +296,7 @@ updateChart('technical');
 
     <!-- Intern -->
     <div class="experience-item">
-      <h5>Intern</h5>
+      <h5><i class="fas fa-user-graduate text-success"></i> Intern</h5>
       <p>HCL Technologies Ltd <span class="text-muted">(2023–2024)</span></p>
       <ul>
         <li>Assisted in data analysis and report generation using Excel and SQL.</li>
@@ -302,7 +307,7 @@ updateChart('technical');
 
     <!-- Apprentice -->
     <div class="experience-item">
-      <h5>Apprentice</h5>
+      <h5><i class="fas fa-tools text-warning"></i> Apprentice</h5>
       <p>HCL Technologies Ltd <span class="text-muted">(2022–2023)</span></p>
       <ul>
         <li>Gained hands-on experience in database management and reporting.</li>
@@ -310,24 +315,38 @@ updateChart('technical');
         <li>Completed training on company tools, processes, and workflows.</li>
       </ul>
     </div>
-
   </div>
 </section>
 
-<!-- Optional CSS for spacing -->
+<!-- Updated CSS -->
 <style>
 .experience-item {
   margin-bottom: 25px;
+  transition: 0.3s;
+}
+.experience-item:hover {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 8px;
 }
 .experience-item h5 {
   font-weight: bold;
+  margin-bottom: 5px;
+}
+.experience-item i {
+  margin-right: 8px;
+}
+ul {
+  margin-top: 5px;
+  padding-left: 25px;
 }
 .text-muted {
   color: #6c757d;
 }
-ul {
-  margin-top: 5px;
-  padding-left: 20px;
+@media (max-width: 768px) {
+  .experience-item ul {
+    padding-left: 15px;
+  }
 }
 </style>
 
@@ -394,4 +413,5 @@ ul {
   </script>
 </body>
 </html>
+
 
