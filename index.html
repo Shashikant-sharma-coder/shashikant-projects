@@ -122,7 +122,7 @@
     <h2 class="section-title">My Skills</h2>
     <div class="row">
       
-      <!-- Left-side Skills Cards (keep them as is) -->
+      <!-- Left-side Skills Cards -->
       <div class="col-md-7">
         <!-- Technical Skills -->
         <h4 class="mt-4"><i class="fas fa-laptop-code text-primary"></i> Technical Skills</h4>
@@ -134,7 +134,6 @@
           <div class="col-6 col-md-4"><div class="card h-100 shadow-sm"><div class="card-body"><i class="fab fa-microsoft"></i><h6>Azure</h6></div></div></div>
           <div class="col-6 col-md-4"><div class="card h-100 shadow-sm"><div class="card-body"><i class="fas fa-snowflake"></i><h6>Snowflake</h6></div></div></div>
           <div class="col-6 col-md-4"><div class="card h-100 shadow-sm"><div class="card-body"><i class="fas fa-chart-pie"></i><h6>Data Viz</h6></div></div></div>
-          <div class="col-6 col-md-4"><div class="card h-100 shadow-sm"><div class="card-body"><i class="fas fa-server"></i><h6>SSMS</h6></div></div></div>
         </div>
 
         <!-- Analytical Skills -->
@@ -172,48 +171,43 @@
   </div>
 </section>
 
+<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-
 <script>
 const ctx = document.getElementById('skillsChart');
 
 const skillData = {
   technical: {
-    labels: ["SQL","Power BI","Excel","DBT","Azure","Snowflake","Data Viz","SSMS"],
-    data: [20,20,15,15,10,10,5,5],
-    colors: ["#ff4d4d","#ffa64d","#ffff4d","#4dff4d","#4dffff","#4d4dff","#ff4dff","#ff4da6"]
+    labels: ["SQL","Power BI","Excel","DBT","Azure","Snowflake","Data Viz"],
+    data: [20,20,15,15,10,15,5], // Updated Snowflake 15%, SSMS removed
+    colors: ["#007bff","#28a745","#ffc107","#6f42c1","#17a2b8","#fd7e14","#20c997"]
   },
   analytical: {
     labels: ["Data Analysis","Analytical Skills","Financial Analysis","Data Modeling","Business Analysis"],
     data: [30,25,20,15,10],
-    colors: ["#ff9933","#33ff99","#3399ff","#ff33cc","#cc33ff"]
+    colors: ["#28a745","#20c997","#ffc107","#6f42c1","#007bff"]
   },
   professional: {
     labels: ["Communication","Email Etiquette","Phone Etiquette","Body Posture","Meeting Mgmt","Intent Ownership"],
     data: [25,20,15,15,15,10],
-    colors: ["#ffcc33","#33ccff","#cc33ff","#33ffcc","#ff33cc","#ff6633"]
+    colors: ["#ffc107","#007bff","#17a2b8","#20c997","#6f42c1","#e83e8c"]
   }
 };
 
 let skillsChart = new Chart(ctx, {
   type: 'doughnut',
-  data: { labels: [], datasets: [{ data: [], backgroundColor: [], borderWidth: 2 }] },
+  data: { labels: [], datasets: [{ data: [], backgroundColor: [] }] },
   options: {
     responsive: true,
-    cutout: '50%',
-    animation: { animateScale: true, animateRotate: true },
     plugins: {
-      legend: { position: 'bottom', labels: { font: { size: 14, weight: 'bold' } } },
+      legend: { position: 'bottom' },
       datalabels: {
         color: '#fff',
-        formatter: (value, context) => {
-          // Fun / error style text
-          let skill = context.chart.data.labels[context.dataIndex];
-          let percent = value + '%';
-          return skill.toUpperCase() + ' ⚡ ' + percent;
-        },
         font: { weight: 'bold', size: 12 },
+        formatter: (value, context) => {
+          return context.chart.data.labels[context.dataIndex] + ' ' + value + '%';
+        },
         anchor: 'center',
         align: 'center'
       },
@@ -240,6 +234,7 @@ function updateChart(category) {
 // Load Technical by default
 updateChart('technical');
 </script>
+
 
 
   <!-- Projects Section -->
@@ -413,5 +408,6 @@ ul {
   </script>
 </body>
 </html>
+
 
 
