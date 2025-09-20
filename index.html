@@ -511,23 +511,77 @@ function toggleDetails(index) {
 
 
   <!-- Contact Section -->
-  <section id="contact" class="content-section">
-    <div class="container">
-      <h2 class="section-title">Contact Me</h2>
-      <form>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Your Name" required>
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" placeholder="Your Email" required>
-        </div>
-        <div class="mb-3">
-          <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-info">Send Message</button>
-      </form>
-    </div>
-  </section>
+<section id="contact" class="content-section">
+  <div class="container">
+    <h2 class="section-title">Contact Me</h2>
+    <form id="contact-form">
+      <div class="mb-3">
+        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+      </div>
+      <div class="mb-3">
+        <textarea id="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-info">Send Message</button>
+      <p id="form-status" style="margin-top:10px;"></p>
+    </form>
+  </div>
+</section>
+
+<!-- Contact Form CSS -->
+<style>
+#contact-form input, 
+#contact-form textarea {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#contact-form button {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+#form-status {
+  font-weight: bold;
+  color: green;
+}
+</style>
+
+<!-- EmailJS Integration -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+  emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+})();
+
+document.getElementById('contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const status = document.getElementById('form-status');
+  status.style.color = 'green';
+  status.innerText = 'Sending...';
+
+  const templateParams = {
+    from_name: document.getElementById('name').value,
+    from_email: document.getElementById('email').value,
+    message: document.getElementById('message').value
+  };
+
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+  .then(function(response) {
+    status.innerText = 'Message sent successfully!';
+    document.getElementById('contact-form').reset();
+  }, function(error) {
+    status.style.color = 'red';
+    status.innerText = 'Failed to send message. Please try again.';
+    console.error('EmailJS error:', error);
+  });
+});
+</script>
 
   <!-- Footer -->
   <footer>
@@ -559,6 +613,7 @@ function toggleDetails(index) {
   </script>
 </body>
 </html>
+
 
 
 
