@@ -11,6 +11,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
     }
     .hero {
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
@@ -26,7 +27,7 @@
       margin-bottom: 20px;
     }
     .section-title {
-      margin: 50px 0 30px;
+      margin: 40px 0 20px;
       text-align: center;
       font-weight: 700;
     }
@@ -48,6 +49,25 @@
       transform: translateY(-8px);
       box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     }
+
+    /* Tab-style section handling */
+    .content-section {
+      display: none;
+      min-height: 70vh;
+      padding: 60px 20px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    .content-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .navbar .nav-link.active-link {
+      font-weight: bold;
+      border-bottom: 2px solid #0dcaf0;
+    }
   </style>
 </head>
 <body>
@@ -61,93 +81,161 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('about')">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('skills')">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('projects')">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('experience')">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('certificates')">Certificates</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('contact')">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (always visible at top) -->
   <section id="home" class="hero">
     <div class="container">
       <img src="profile.jpg" alt="Shashikant Sharma">
       <h1 class="fw-bold">Shashikant Sharma</h1>
       <p>Data Analyst | Power BI | SQL | Excel | Azure Specialist</p>
-      <a href="#contact" class="btn btn-info mt-3">Hire Me</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="content-section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p>
+        I am Shashikant Sharma, a Data Analyst with expertise in SQL, Power BI, Excel, and Azure.
+        My focus is on turning raw data into meaningful insights that help businesses make smarter decisions.
+        Over the past few years, I have built dashboards, optimized SQL queries, and automated reports that improve efficiency.
+        My journey at HCL Technologies and multiple certifications from Microsoft, Google, and IBM
+        have strengthened my technical and problem-solving skills.
+        I am passionate about continuous learning and exploring new tools in data analytics and cloud.
+      </p>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="container">
-    <h2 class="section-title">My Skills</h2>
-    <div class="row text-center">
-      <div class="col-md-3"><h5>SQL</h5><p>Database Management</p></div>
-      <div class="col-md-3"><h5>Power BI</h5><p>Data Visualization</p></div>
-      <div class="col-md-3"><h5>Excel</h5><p>Data Analysis</p></div>
-      <div class="col-md-3"><h5>Azure</h5><p>Cloud Specialist</p></div>
+  <section id="skills" class="content-section">
+    <div class="container">
+      <h2 class="section-title">My Skills</h2>
+      <div class="row text-center">
+        <div class="col-md-3"><h5>SQL</h5><p>Database Management</p></div>
+        <div class="col-md-3"><h5>Power BI</h5><p>Data Visualization</p></div>
+        <div class="col-md-3"><h5>Excel</h5><p>Data Analysis</p></div>
+        <div class="col-md-3"><h5>Azure</h5><p>Cloud Specialist</p></div>
+      </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="container">
-    <h2 class="section-title">Projects</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card project-card">
-          <div class="card-body">
-            <h5 class="card-title">Project 1</h5>
-            <p class="card-text">Power BI dashboard for sales insights.</p>
-            <a href="#" class="btn btn-dark btn-sm">View</a>
+  <section id="projects" class="content-section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card project-card">
+            <div class="card-body">
+              <h5 class="card-title">Project 1</h5>
+              <p class="card-text">Power BI dashboard for sales insights.</p>
+              <a href="#" class="btn btn-dark btn-sm">View</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card project-card">
-          <div class="card-body">
-            <h5 class="card-title">Project 2</h5>
-            <p class="card-text">SQL queries for business reporting.</p>
-            <a href="#" class="btn btn-dark btn-sm">View</a>
+        <div class="col-md-4">
+          <div class="card project-card">
+            <div class="card-body">
+              <h5 class="card-title">Project 2</h5>
+              <p class="card-text">SQL queries for business reporting.</p>
+              <a href="#" class="btn btn-dark btn-sm">View</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card project-card">
-          <div class="card-body">
-            <h5 class="card-title">Project 3</h5>
-            <p class="card-text">Excel automation for finance team.</p>
-            <a href="#" class="btn btn-dark btn-sm">View</a>
+        <div class="col-md-4">
+          <div class="card project-card">
+            <div class="card-body">
+              <h5 class="card-title">Project 3</h5>
+              <p class="card-text">Excel automation for finance team.</p>
+              <a href="#" class="btn btn-dark btn-sm">View</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Experience Section -->
+  <section id="experience" class="content-section">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <p>
+        <strong>Software Engineer</strong> – HCL Technologies Ltd (2024–Present)<br>
+        <strong>Intern</strong> – HCL Technologies Ltd (2023–2024)<br>
+        <strong>Apprentice</strong> – HCL Technologies Ltd (2022–2023)
+      </p>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates" class="content-section">
+    <div class="container">
+      <h2 class="section-title">Certificates</h2>
+      <ul>
+        <li>Microsoft Certified: Power BI Data Analyst Associate</li>
+        <li>Microsoft Certified: Azure Data Fundamentals</li>
+        <li>Google Data Analytics (Foundations)</li>
+        <li>IBM SQL & Data Science Certifications</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Contact Section -->
-  <section id="contact" class="container">
-    <h2 class="section-title">Contact Me</h2>
-    <form>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Your Name" required>
-      </div>
-      <div class="mb-3">
-        <input type="email" class="form-control" placeholder="Your Email" required>
-      </div>
-      <div class="mb-3">
-        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-info">Send Message</button>
-    </form>
+  <section id="contact" class="content-section">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-info">Send Message</button>
+      </form>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Shashikant Sharma. All rights reserved. | <a href="https://github.com/shashikant-sharma-coder">GitHub</a></p>
+    <p>© 2025 Shashikant Sharma. All rights reserved. | 
+      <a href="https://github.com/shashikant-sharma-coder">GitHub</a>
+    </p>
   </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Tab Logic -->
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.content-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active-link');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      event.target.classList.add('active-link');
+    }
+
+    // Show About section by default
+    document.addEventListener("DOMContentLoaded", function() {
+      showSection('about');
+    });
+  </script>
 </body>
 </html>
