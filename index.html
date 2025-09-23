@@ -239,19 +239,31 @@ updateChart('technical');
 
 <!-- Projects Section -->
 <section id="projects" class="content-section">
-  <div class="row">
-    <!-- Project 1: Power BI -->
-    <div class="col-md-4 mb-4">
-      <div class="card project-card hover-card">
-        <img src="screenshots/Dashboard.png" class="card-img-top" alt="Final Dashboard">
-        <div class="card-body">
-          <h5 class="card-title">Retail Sales Analysis – Power BI</h5>
-          <p class="card-text">Analyze retail sales data with interactive dashboards, KPIs, and DAX measures.</p>
-          <a href="https://github.com/Shashikant-sharma-coder/Retail-Sales-Analysis/blob/main/Retail-Sales-Analysis.pbix" class="btn btn-dark btn-sm" target="_blank">Download PBIX</a>
-          <a href="https://github.com/Shashikant-sharma-coder/Retail-Sales-Analysis" class="btn btn-dark btn-sm" target="_blank">View GitHub Repo</a>
-        </div>
+<div class="col-md-4 mb-4">
+  <div class="card project-card">
+    <img src="Dashboard.gif" class="card-img-top" alt="Final Dashboard" />
+    <div class="card-body">
+      <h5 class="card-title">Retail Sales Analysis – Power BI</h5>
+      <p class="card-text">Analyze retail sales data with interactive dashboards, KPIs, and DAX measures.</p>
+      <!-- Buttons -->
+      <a href="https://github.com/Shashikant-sharma-coder/Retail-Sales-Analysis/blob/main/Retail-Sales-Analysis.pbix" class="btn btn-dark btn-sm" target="_blank">Download PBIX</a>
+      <a href="https://github.com/Shashikant-sharma-coder/Retail-Sales-Analysis" class="btn btn-dark btn-sm" target="_blank">View GitHub Repo</a>
+      <a href="#" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#dashboardModal">View Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full-size Dashboard -->
+<div class="modal fade" id="dashboardModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="screenshots/Dashboard.png" class="img-fluid" alt="Final Dashboard" />
       </div>
     </div>
+  </div>
+</div>
+
 
     <!-- Project 2 -->
     <div class="col-md-4 mb-4">
@@ -634,6 +646,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e){
   </script>
 </body>
 </html>
+
 
 
 
