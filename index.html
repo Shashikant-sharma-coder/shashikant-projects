@@ -241,9 +241,9 @@ updateChart('technical');
 <section id="projects" class="content-section">
   <div class="row">
     <!-- Project 1: Power BI -->
-    <div class="col-md-4">
-      <div class="card project-card">
-        <img src="Dashboard.png" class="card-img-top" alt="Final Dashboard">
+    <div class="col-md-4 mb-4">
+      <div class="card project-card hover-card">
+        <img src="screenshots/Dashboard.png" class="card-img-top" alt="Final Dashboard">
         <div class="card-body">
           <h5 class="card-title">Retail Sales Analysis – Power BI</h5>
           <p class="card-text">Analyze retail sales data with interactive dashboards, KPIs, and DAX measures.</p>
@@ -254,8 +254,8 @@ updateChart('technical');
     </div>
 
     <!-- Project 2 -->
-    <div class="col-md-4">
-      <div class="card project-card">
+    <div class="col-md-4 mb-4">
+      <div class="card project-card hover-card">
         <div class="card-body">
           <h5 class="card-title">Project 2</h5>
           <p class="card-text">SQL queries for business reporting.</p>
@@ -265,8 +265,8 @@ updateChart('technical');
     </div>
 
     <!-- Project 3 -->
-    <div class="col-md-4">
-      <div class="card project-card">
+    <div class="col-md-4 mb-4">
+      <div class="card project-card hover-card">
         <div class="card-body">
           <h5 class="card-title">Project 3</h5>
           <p class="card-text">Excel automation for finance team.</p>
@@ -276,6 +276,17 @@ updateChart('technical');
     </div>
   </div>
 </section>
+
+<!-- Add this CSS in your style.css or <style> tag -->
+<style>
+.hover-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+</style>
 
 
 <!-- Experience Section -->
@@ -623,6 +634,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e){
   </script>
 </body>
 </html>
+
 
 
 
