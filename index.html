@@ -1,337 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shashikant Sharma | Portfolio</title>
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashikant | Data Analyst Pro</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary-color: #0dcaf0;
-      --dark-bg: #0f2027;
-    }
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --accent-cyan: #00f2ff;
+            --accent-blue: #0066ff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f4f7f6;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor handle */
+        }
 
-    /* Floating Navbar */
-    .navbar {
-      margin-top: 20px;
-      border-radius: 50px;
-      background: rgba(0, 0, 0, 0.8) !important;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        /* Custom Cursor */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
 
-    /* Hero Section with Particles */
-    .hero {
-      position: relative;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      padding: 150px 20px;
-      text-align: center;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-      overflow: hidden;
-    }
+        /* Bento Grid Projects */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 200px;
+            gap: 20px;
+        }
 
-    #particles-js {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
+        .bento-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 25px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
+        .bento-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
 
-    .hero img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 5px solid var(--primary-color);
-      margin-bottom: 20px;
-      transition: transform 0.5s;
-    }
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-tall { grid-row: span 2; }
 
-    .hero img:hover {
-      transform: scale(1.1) rotate(5deg);
-    }
+        /* Modern Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+        }
 
-    /* Modern Section Titles */
-    .section-title {
-      position: relative;
-      margin: 40px 0 30px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
+        .glow-text {
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3));
+        }
 
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: var(--primary-color);
-      margin: 10px auto;
-    }
+        /* Nav Glass */
+        .nav-modern {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
+            padding: 10px 30px;
+            margin-top: 20px;
+            width: fit-content;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    /* Glassmorphism Cards */
-    .card {
-      border: none;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
+        /* Animations */
+        .content-section { display: none; padding: 100px 0; }
+        .active-section { display: block; animation: sectionIn 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 
-    .skill-card:hover {
-      transform: translateY(-10px);
-      background: var(--primary-color);
-      color: white;
-    }
+        @keyframes sectionIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
 
-    .skill-card i {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #0077b6;
-    }
+        .btn-neon {
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            border-radius: 100px;
+            padding: 12px 35px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
 
-    .skill-card:hover i {
-      color: white;
-    }
-
-    .project-card {
-      overflow: hidden;
-    }
-
-    .project-card img {
-      transition: transform 0.5s;
-    }
-
-    .project-card:hover img {
-      transform: scale(1.1);
-    }
-
-    /* Tabs Handling */
-    .content-section {
-      display: none;
-      min-height: 70vh;
-      padding: 80px 0;
-    }
-
-    .content-section.active {
-      display: block;
-    }
-
-    .nav-link {
-      cursor: pointer;
-      color: white !important;
-      margin: 0 5px;
-    }
-
-    .active-link {
-      color: var(--primary-color) !important;
-      border-bottom: 2px solid var(--primary-color);
-    }
-
-    footer {
-      background: #111;
-      color: #fff;
-      padding: 40px 0;
-      margin-top: 50px;
-    }
-  </style>
+        .btn-neon:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--accent-cyan);
+        }
+    </style>
 </head>
 <body>
 
-  <div id="particles-js"></div>
+    <div id="cursor"></div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top container">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">SHASHIKANT</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active-link" onclick="showSection('about', this)">About</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="showSection('skills', this)">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="showSection('projects', this)">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="showSection('experience', this)">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="showSection('certificates', this)">Certificates</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="showSection('contact', this)">Contact</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-modern">
+        <ul class="navbar-nav gap-3">
+            <li class="nav-item"><a class="nav-link" onclick="switchSection('about')">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchSection('projects')">Works</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchSection('skills')">Stack</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="switchSection('contact')">Reach</a></li>
         </ul>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <section id="home" class="hero">
-    <div class="container hero-content" data-aos="zoom-in">
-      <img src="profile.jpg" alt="Shashikant Sharma">
-      <h1 class="fw-bold display-4">Shashikant Sharma</h1>
-      <h3 class="fw-light"><span id="typewriter"></span></h3>
-      <div class="mt-4">
-        <a href="#contact" class="btn btn-info px-4 py-2 rounded-pill" onclick="showSection('contact')">Hire Me</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="content-section active">
-    <div class="container" data-aos="fade-up">
-      <h2 class="section-title text-center">About Me</h2>
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <p class="lead">Data Analyst | Decision Maker | Insight Seeker</p>
-          <p>I am Shashikant Sharma, a Data Analyst with expertise in SQL, Power BI, Excel, and Azure. My focus is on turning raw data into meaningful insights that help businesses make smarter decisions.</p>
+    <section class="hero" id="hero-sec">
+        <div class="text-center" data-aos="zoom-out">
+            <h1 class="glow-text">SHASHIKANT</h1>
+            <p class="fs-4 fw-light text-secondary">Analyzing Data. Driving Decisions.</p>
+            <div id="typed-text" class="text-info mb-4"></div>
+            <button class="btn btn-neon" onclick="switchSection('projects')">Explore Work</button>
         </div>
-        <div class="col-md-6 text-center">
-           <i class="fas fa-chart-line fa-10x text-info opacity-25"></i>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills" class="content-section">
-    <div class="container">
-      <h2 class="section-title text-center">My Expertise</h2>
-      <div class="row">
-        <div class="col-md-7" data-aos="fade-right">
-          <div class="row g-3">
-            <div class="col-6 col-md-4">
-              <div class="card skill-card p-3 text-center">
-                <i class="fas fa-database"></i>
-                <h6>SQL</h6>
-              </div>
+    <section id="projects" class="container content-section">
+        <h2 class="mb-5 text-center fw-bold">PORTFOLIO BENTO</h2>
+        <div class="bento-grid">
+            <div class="bento-item item-large">
+                <span class="badge bg-info mb-2">Featured</span>
+                <h3>Retail Sales Analysis</h3>
+                <p class="text-secondary">End-to-end Power BI dashboard with complex DAX measures and interactive drill-throughs.</p>
+                <img src="Dashboard.gif" class="img-fluid rounded mt-3" style="max-height: 200px; width: 100%; object-fit: cover;">
+                <div class="mt-3">
+                    <a href="#" class="btn btn-neon btn-sm">Case Study</a>
+                </div>
             </div>
-            <div class="col-6 col-md-4">
-              <div class="card skill-card p-3 text-center">
-                <i class="fas fa-chart-bar"></i>
-                <h6>Power BI</h6>
-              </div>
+            <div class="bento-item item-tall">
+                <i class="fas fa-hospital fa-3x mb-3 text-info"></i>
+                <h3>Hospital SQL</h3>
+                <p class="text-secondary">Database architecture and 23+ optimized queries for medical data management.</p>
             </div>
-            <div class="col-6 col-md-4">
-              <div class="card skill-card p-3 text-center">
-                <i class="fab fa-microsoft"></i>
-                <h6>Azure</h6>
-              </div>
+            <div class="bento-item">
+                <h3>Azure Cloud</h3>
+                <p class="text-secondary small">Data pipeline certification & fundamentals.</p>
             </div>
-          </div>
-        </div>
-        <div class="col-md-5" data-aos="fade-left">
-          <canvas id="skillsChart"></canvas>
-          <div class="mt-3 text-center">
-            <button class="btn btn-outline-primary btn-sm" onclick="updateChart('technical')">Technical</button>
-            <button class="btn btn-outline-success btn-sm" onclick="updateChart('analytical')">Analytical</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="content-section">
-    <div class="container">
-      <h2 class="section-title text-center">Featured Projects</h2>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="flip-left">
-          <div class="card project-card h-100 shadow">
-            <img src="Dashboard.gif" class="card-img-top" alt="Retail Analysis">
-            <div class="card-body">
-              <h5 class="card-title">Retail Sales Analysis</h5>
-              <p class="card-text">Comprehensive Power BI dashboard with DAX.</p>
-              <a href="https://github.com/Shashikant-sharma-coder/Retail-Sales-Analysis" class="btn btn-dark btn-sm rounded-pill">View Code</a>
+            <div class="bento-item">
+                <h3>Financial Automation</h3>
+                <p class="text-secondary small">Excel VBA & Pivot reporting.</p>
             </div>
-          </div>
         </div>
+    </section>
+
+    <section id="skills" class="container content-section">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-4">TECHNICAL STACK</h2>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="btn-neon py-1 px-3">SQL</span>
+                    <span class="btn-neon py-1 px-3">Power BI</span>
+                    <span class="btn-neon py-1 px-3">Azure</span>
+                    <span class="btn-neon py-1 px-3">Python</span>
+                    <span class="btn-neon py-1 px-3">Excel</span>
+                    <span class="btn-neon py-1 px-3">Snowflake</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <canvas id="modernChart"></canvas>
+            </div>
         </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="content-section">
-    <div class="container" data-aos="fade-up">
-      <h2 class="section-title text-center">Get In Touch</h2>
-      <div class="card p-4 mx-auto shadow" style="max-width: 600px;">
-        <form id="contact-form">
-          <input type="text" id="name" class="form-control mb-3" placeholder="Name" required>
-          <input type="email" id="email" class="form-control mb-3" placeholder="Email" required>
-          <textarea id="message" class="form-control mb-3" rows="4" placeholder="Message" required></textarea>
-          <button type="submit" class="btn btn-info w-100">Send Message</button>
-          <p id="form-status" class="mt-2 text-center"></p>
-        </form>
-      </div>
-    </div>
-  </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <footer class="text-center">
-    <div class="container">
-      <div class="mb-3">
-        <a href="https://github.com/shashikant-sharma-coder" class="text-white me-3"><i class="fab fa-github fa-2x"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-linkedin fa-2x"></i></a>
-      </div>
-      <p>© 2025 Shashikant Sharma | Crafted with ❤️</p>
-    </div>
-  </footer>
+    <script>
+        // AOS Initialize
+        AOS.init();
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
 
-  <script>
-    // Initialize AOS
-    AOS.init({ duration: 1000, once: true });
+        // Typewriter
+        new Typewriter('#typed-text', {
+            strings: ['Microsoft Certified Power BI Analyst', 'HCL Technologies Developer', 'SQL Query Architect'],
+            autoStart: true,
+            loop: true,
+        });
 
-    // Typewriter Effect
-    new Typewriter('#typewriter', {
-      strings: ['Data Analyst', 'Power BI Specialist', 'SQL Expert', 'Azure Certified'],
-      autoStart: true,
-      loop: true,
-    });
+        // Section Switcher
+        function switchSection(id) {
+            document.getElementById('hero-sec').style.display = 'none';
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
+            const target = document.getElementById(id);
+            target.classList.add('active-section');
+            window.scrollTo(0,0);
+        }
 
-    // Particles Background
-    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/npm/particles.js@2.0.0/demo/particles.json');
-
-    // Section Switching Logic
-    function showSection(sectionId, element) {
-      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(sectionId).classList.add('active');
-      
-      if(element) {
-        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-link'));
-        element.classList.add('active-link');
-      }
-      
-      // Re-trigger AOS
-      AOS.refresh();
-      window.scrollTo(0, 400); // Scroll down to content
-    }
-
-    // Chart.js (Simplified)
-    const ctx = document.getElementById('skillsChart');
-    let skillsChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ["SQL","Power BI","Excel","Azure"],
-        datasets: [{
-          data: [30, 30, 20, 20],
-          backgroundColor: ["#007bff","#28a745","#ffc107","#17a2b8"]
-        }]
-      },
-      options: { plugins: { legend: { position: 'bottom' } } }
-    });
-  </script>
+        // Radar Chart (Modern Skill View)
+        const ctx = document.getElementById('modernChart');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['SQL', 'Visualization', 'Cloud', 'Statistics', 'Modeling'],
+                datasets: [{
+                    label: 'Skill Level',
+                    data: [90, 95, 75, 80, 85],
+                    borderColor: '#00f2ff',
+                    backgroundColor: 'rgba(0, 242, 255, 0.2)',
+                }]
+            },
+            options: {
+                scales: {
+                    r: { grid: { color: '#333' }, angleLines: { color: '#333' } }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
