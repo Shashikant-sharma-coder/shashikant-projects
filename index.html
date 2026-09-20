@@ -530,31 +530,41 @@
         });
         document.addEventListener('mouseover', e => cursor.classList.toggle('big', !!(e.target.closest && e.target.closest('a, button'))));
 
-        // Contact form -> delivered to CONTACT_TO via FormSubmit
+        // Contact form -> delivered to CONTACT_TO via FormSubmit (with a mailto backup)
         document.getElementById('contact-form').addEventListener('submit', async function (e) {
             e.preventDefault();
             const s = document.getElementById('status'), btn = this.querySelector('button[type=submit]');
+            const name = document.getElementById('name').value, email = document.getElementById('email').value, message = document.getElementById('message').value;
+            const backup = 'mailto:' + CONTACT_TO + '?subject=' + encodeURIComponent('Portfolio message from ' + name) +
+                           '&body=' + encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')');
+            const fail = (why) => {
+                s.style.color = '#f87171';
+                s.innerHTML = esc(why) + ' <br><a href="' + backup + '" style="color:#22d3ee">Click here to send it from your mail app instead</a>';
+            };
+            if (location.protocol === 'file:') { fail('The form only works on the live https:// site, not from a local file.'); return; }
             s.style.color = '#94a3b8'; s.innerText = "Sending..."; btn.disabled = true;
             try {
                 const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_TO, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify({
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        message: document.getElementById('message').value,
-                        _subject: 'New portfolio message from ' + document.getElementById('name').value,
-                        _replyto: document.getElementById('email').value,
+                        name, email, message,
+                        _subject: 'New portfolio message from ' + name,
+                        _replyto: email,
                         _template: 'table',
                         _captcha: 'false'
                     })
                 });
-                const data = await res.json();
+                const data = await res.json().catch(() => ({}));
                 if (res.ok && (data.success === true || data.success === 'true')) {
                     s.style.color = '#4ade80'; s.innerText = "Sent Successfully! 🚀"; this.reset();
-                } else { throw new Error(data.message || 'failed'); }
+                } else if (/activat/i.test(data.message || '')) {
+                    fail('One-time setup pending: the site owner needs to click "Activate" in the email FormSubmit just sent.');
+                } else {
+                    fail(data.message || 'Could not send the message.');
+                }
             } catch (err) {
-                s.style.color = '#f87171'; s.innerText = "Could not send. Please email me directly.";
+                fail('Could not reach the mail service.');
             } finally { btn.disabled = false; }
         });
 
