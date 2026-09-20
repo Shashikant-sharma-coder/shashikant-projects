@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Shashikant Sharma – Data Analyst & Automation Engineer. Power BI, SQL, Azure, SAP, VBA and Power Automate.">
     <meta name="theme-color" content="#050816">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.55' stop-color='%23a78bfa'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='%23050816'%3ESS%3C/text%3E%3C/svg%3E">
+    <link rel="canonical" href="https://shashikant-sharma-coder.github.io/shashikant-projects/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shashikant Sharma | Data Analyst &amp; Automation">
+    <meta property="og:description" content="Power BI, SQL, Azure, SAP, VBA and Power Automate. Dashboards and reporting automation projects.">
+    <meta property="og:url" content="https://shashikant-sharma-coder.github.io/shashikant-projects/">
+    <meta property="og:image" content="https://shashikant-sharma-coder.github.io/shashikant-projects/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shashikant Sharma | Data Analyst &amp; Automation">
+    <meta name="twitter:description" content="Power BI, SQL, Azure, SAP, VBA and Power Automate.">
+    <meta name="twitter:image" content="https://shashikant-sharma-coder.github.io/shashikant-projects/og-image.png">
     <title>Shashikant Sharma | Data Analyst Portfolio</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -170,6 +183,14 @@
         .proj-points li { font-size: .84rem; color: var(--text-dim); padding-left: 20px; position: relative; margin-bottom: 5px; }
         .proj-points li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: var(--accent); font-size: .7rem; top: 3px; }
 
+
+        /* ---------- Flow strip on micro projects ---------- */
+        .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 4px; margin: 2px 0 14px; padding: 12px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.14); }
+        .flow .step { font-size: .72rem; line-height: 1.25; padding: 6px 10px; border-radius: 10px; background: rgba(167,139,250,.12); color: #ddd6fe; border: 1px solid rgba(167,139,250,.25); }
+        .flow .step:first-child { background: rgba(34,211,238,.1); color: #a5f3fc; border-color: rgba(34,211,238,.25); }
+        .flow .step:last-child { background: rgba(74,222,128,.1); color: #bbf7d0; border-color: rgba(74,222,128,.28); }
+        .flow .arr { color: var(--text-dim); font-size: .85rem; }
+
         /* ---------- Timeline ---------- */
         .timeline { position: relative; padding-left: 30px; }
         .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--accent-2), transparent); }
@@ -224,6 +245,7 @@
             <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
                 <button class="btn btn-grad" data-go="projects">View My Work <i class="fas fa-arrow-right ms-2"></i></button>
                 <button class="btn btn-ghost" data-go="contact">Contact Me</button>
+                <a class="btn btn-ghost" href="Shashikant_Sharma_Resume.pdf" download>Download CV <i class="fas fa-download ms-2"></i></a>
             </div>
             <div class="social mt-4">
                 <a href="https://github.com/shashikant-sharma-coder" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -396,23 +418,28 @@
             { cat: "micro", title: "Monthly Deck Auto-Updater", icon: "fa-file-powerpoint",
               desc: "VBA macro that refreshes a monthly operations review PowerPoint straight from the latest Excel reports.",
               points: ["Finds slides by title, so it survives layout shifts", "Charts stay live and editable, not screenshots", "Auto-rebuilds observation text from the data"],
-              tags: ["VBA", "PowerPoint", "Excel"] },
+              tags: ["VBA", "PowerPoint", "Excel"],
+              flow: ["Latest Excel reports", "VBA finds slides by title", "Charts + notes refreshed", "Updated PPT"] },
             { cat: "micro", title: "Multi-Group Chart Generator", icon: "fa-chart-column",
               desc: "Macro that loops through 12 assignment-group filters and gathers the resulting charts into one worksheet.",
               points: ["Created vs Resolved and Ageing Analysis charts", "Waits for pivot refresh before copying", "Reports failed groups and keeps going"],
-              tags: ["VBA", "Pivot Tables", "Excel"] },
+              tags: ["VBA", "Pivot Tables", "Excel"],
+              flow: ["Report workbook", "Loop 12 group filters", "Wait for pivot refresh", "One consolidated sheet"] },
             { cat: "micro", title: "Weekly Incident Report Automation", icon: "fa-robot",
               desc: "Hybrid workflow that automates the weekly application incident report from email to finished Excel output.",
               points: ["Power Automate flow saves the email attachment to OneDrive", "VBA applies lookups, formulas and pivot refresh", "Saves the result with a dated file name"],
-              tags: ["Power Automate", "VBA", "ServiceNow"] },
+              tags: ["Power Automate", "VBA", "ServiceNow"],
+              flow: ["Email arrives", "Power Automate saves to OneDrive", "VBA processes data", "Dated report saved"] },
             { cat: "micro", title: "Incident Reporting Workbook", icon: "fa-table",
               desc: "Excel model that rebuilds management report logic for incident tracking.",
               points: ["FILTER-based extraction by year", "Week-start, age-bucket and tower columns", "Pivots and charts with clean legends"],
-              tags: ["Excel", "Formulas", "Pivot Charts"] },
+              tags: ["Excel", "Formulas", "Pivot Charts"],
+              flow: ["Raw incident data", "FILTER + lookups", "Pivots &amp; charts", "Management view"] },
             { cat: "micro", title: "Auto-Refresh Power BI on SharePoint", icon: "fa-rotate",
               desc: "Power BI report connected to SharePoint-backed Teams files so it refreshes itself every month.",
               points: ["SharePoint Folder connector", "Latest-file or append strategy", "No manual re-import"],
-              tags: ["Power BI", "SharePoint", "Automation"] }
+              tags: ["Power BI", "SharePoint", "Automation"],
+              flow: ["SharePoint / Teams files", "Folder connector", "Latest file or append", "Auto-refreshed report"] }
         ];
 
         const certs = [
@@ -451,6 +478,7 @@
                     <h5 class="mb-2">${esc(p.title)}</h5>
                     <p class="text-secondary small mb-0">${esc(p.desc)}</p>
                     ${p.points ? `<ul class="proj-points">${p.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<div class="mb-3"></div>'}
+                    ${p.flow ? `<div class="flow">${p.flow.map((f, i) => (i ? '<span class="arr">&rarr;</span>' : '') + `<span class="step">${f}</span>`).join('')}</div>` : ''}
                     <div class="mt-auto">
                         <div class="mb-2">${p.tags.map(t => `<span class="proj-tag">${esc(t)}</span>`).join('')}</div>
                         ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" class="btn btn-sm btn-grad px-4 mt-1">${p.btn} <i class="fas fa-arrow-up-right-from-square ms-1"></i></a>` : ''}
